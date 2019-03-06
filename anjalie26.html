@@ -46,19 +46,15 @@ p {
   -webkit-transition: height .5s;
   -moz-transition: height .5s;
 }
-
 small {
   opacity: 0;
 }
-
 .show-description p {
   height: 200px;
 }
-
 .show-description small {
   opacity: 1;
 }
-
 .first{
   background-image: url("https://tucsonfoodie.com/wp-content/uploads/2017/10/TF-feast-seared-sea-scallops-0974-620x400.jpg");
 }
@@ -92,7 +88,6 @@ small {
     font-size: 16px;
   }
 }
-
  ul {
       padding: 5px;
       background-color:lavender;
@@ -110,7 +105,6 @@ small {
       font-family:'Nanum Brush Script';
       font-size:30px
     }
-
 </style>
 
 </head>
@@ -118,9 +112,14 @@ small {
 <body>
 
  <ul>
+	  <li><button onclick=Breakfast()> Rise and Shine</button></li>
       <li><button onclick=Lunches()> Lunches</button></li>
       <li><button onclick=Dinners()> Amazing Dinners</button></li>
       <li><button onclick=Desserts()> Decadent Desserts</button></li>
+	  <li><button onclick=Drinks()> Bottoms Up</button></li>
+	  <li><button onclick=Charities()> We Support</button></li>
+	  
+	  
     </ul>
 
 <h1>Like No Udder</h1>
@@ -129,48 +128,98 @@ small {
 <div id="Foodies"></div>
 
 <script>
-
-
+ BreakfastImages = [
+'url("https://olo-images-live.imgix.net/9c/9cf9aba367a4491d89f5ddcc227a9879.jpg?auto=format%2Ccompress&q=60&cs=tinysrgb&w=500&h=333&fit=fill&fm=png32&bg=transparent&s=39190b5a3d1b6faeb656e6d97d68ff95")',
+'url("https://cdn-image.myrecipes.com/sites/default/files/styles/4_3_horizontal_-_1200x900/public/image/recipes/ck/13/06/breakfast-quinoa-ck-x.jpg?itok=TOCzsZka")',
+'url("https://d1doqjmisr497k.cloudfront.net/-/media/mccormick-us/recipes/mccormick/q/2000/quick-and-easy-french-toast-2000x1125.ashx?vd=20181119T193106Z&hash=5B5D288CDC390A69D7555EA864BB54EEFF4F578D")',
+]
 
  LunchesImages = [
-   'url("https://s-media-cache-ak0.pinimg.com/originals/cd/82/ab/cd82aba65a4227b82553b62240847584.jpg")',
-   'url("https://assets3.thrillist.com/v1/image/2704349/size/gn-gift_guide_variable_c.jpg")',
-   'url("https://texasstation.sclv.com/~/media/Images/Page-Background-Images/Palace/Dining/PS_Dining_Grandcafe2.jpg?h=630&la=en&w=1080")',
+'url("https://s-media-cache-ak0.pinimg.com/originals/cd/82/ab/cd82aba65a4227b82553b62240847584.jpg")',
+'url("https://assets3.thrillist.com/v1/image/2704349/size/gn-gift_guide_variable_c.jpg")',
+'url("https://texasstation.sclv.com/~/media/Images/Page-Background-Images/Palace/Dining/PS_Dining_Grandcafe2.jpg?h=630&la=en&w=1080")',
+'url("https://cdn2.stylecraze.com/wp-content/uploads/2014/08/69-Quick-Low-Calorie-Lunches-That-Are-Yummy-To-Eat-1.jpg")',
 ]
 
 DinnerImages = [
-  'url("https://static01.nyt.com/images/2017/08/09/dining/09COOKING-PADTHAI5/09COOKING-PADTHAI5-articleLarge.jpg")',
-  'url("https://static.onecms.io/wp-content/uploads/sites/37/2015/06/15231847/RU304305.jpg.rendition.largest.jpg")',
-  'url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dinner-ideas-ground-beef-nachos-1544454702.png?crop=1.00xw:0.828xh;0,0.0829xh&resize=480:*")',
+'url("https://static01.nyt.com/images/2017/08/09/dining/09COOKING-PADTHAI5/09COOKING-PADTHAI5-articleLarge.jpg")',
+'url("https://static.onecms.io/wp-content/uploads/sites/37/2015/06/15231847/RU304305.jpg.rendition.largest.jpg")',
+'url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dinner-ideas-ground-beef-nachos-1544454702.png?crop=1.00xw:0.828xh;0,0.0829xh&resize=480:*")',
 ]
 
 DessertImages = [
-  'url("https://userscontent2.emaze.com/images/598c771f-171e-41d0-9ff3-f3f723781b6c/dd34ccceeb9b0e5c2694f83ad5ec859d.jpg")',
-  'url("https://cdn.thewhoot.com/wp-content/uploads/2018/01/Baileys-Dessert-Recipes-East-Ideas-Parfaits.jpg")',
-  'url("https://thumbor.thedailymeal.com/nPbucKazg9fWjVhEaz0d6hilLgk=/840x565/https://www.thedailymeal.com/sites/default/files/slides/12-macarons-shutterstock_334532153.jpg")',
+'url("https://userscontent2.emaze.com/images/598c771f-171e-41d0-9ff3-f3f723781b6c/dd34ccceeb9b0e5c2694f83ad5ec859d.jpg")',
+'url("https://cdn.thewhoot.com/wp-content/uploads/2018/01/Baileys-Dessert-Recipes-East-Ideas-Parfaits.jpg")',
+'url("https://thumbor.thedailymeal.com/nPbucKazg9fWjVhEaz0d6hilLgk=/840x565/https://www.thedailymeal.com/sites/default/files/slides/12-macarons-shutterstock_334532153.jpg")',
+'url("https://cdn.shopify.com/s/files/1/1159/9032/products/shutterstock_231401329.jpg?v=1467974525")',
+'url("https://cheddars.com/wp-content/themes/csk/images/menu-hot-fudge-chocolate-cake.jpg")',
   ]
+DrinkImages = [
+'url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYn7Z-1scWCwNDwgMLW290CeOBMM0DLocAQUsjzcAWBLSGVAiq")',
+'url("https://pizzazzerie.com/wp-content/uploads/2015/07/cherry-lemonade-recipe-pizzazzerie.jpg")',
+'url("https://hips.hearstapps.com/del.h-cdn.co/assets/16/17/1461680073-shot-1-113.jpg")',
+'url("https://st3.depositphotos.com/1063437/14648/i/1600/depositphotos_146480571-stock-photo-bottles-of-assorted-global-soft.jpg")',
+'url("https://cdn.shopify.com/s/files/1/2722/7484/articles/coffeetea_hero_930x.jpg?v=1527110071")',
+]
+CharitiesImages = [
+'url("http://www.officialfearnecotton.com/uploads/_bodyImage/1361442254_86966ba196d3465e6a974ec3ebb88a54.png")',
+'url("http://www.archindy.org/cc/terrehaute/images/fa_logo_rgb.jpg")',
+'url("http://www.myneighborschildren.org/s/cc_images/cache_3917628804.png?t=1362922985")',
+]
 
+BreakfastDivs = [
+	'<div class="item" onclick=this.classList.toggle("show-description")><p> Family Sized <span class="price">$11.99</span><br /><small> Eating and being able to pay less it the way to go. come try out our Family Sized breakfast that wil hav you stuffed and begging to take home.</small></p></div>',
+    '<div class="item" onclick=this.classList.toggle("show-description")><p> All In One Pot <span class="price">$12.99</span><br /><small> There is noting better then having a home cooked meal in a pot to make you feel at home. our signiture pot roast is the most selected item on our menu with outstanding beauty of veggies an meats. A grand prize to eat.</small></p></div>',
+  '<div class="item" onclick=this.classList.toggle("show-description")><p>Papas Burger and Fries <span class="price">$4.99</span><br /><small>Nothing can beat the mouth watering burger that is filled with so many flavors and many ways to style. This all time burger is a classic with cruncky and savery fries it is soemthing you dont want to miss.</small></p></div>',
+]
+  
 LunchesDivs = [
     '<div class="item" onclick=this.classList.toggle("show-description")><p> All Time Platter <span class="price">14.99</span><br /><small> With all kinds of meats and cheese to choose from and all with great taste. Pick a wide varities from cold to hot cuts along with bread, crackers, or even wraps </small></p></div>',
     '<div class="item" onclick=this.classList.toggle("show-description")><p> All In One Pot <span class="price">$12.99</span><br /><small> There is noting better then having a home cooked meal in a pot to make you feel at home. our signiture pot roast is the most selected item on our menu with outstanding beauty of veggies an meats. A grand prize to eat.</small></p></div>',
   '<div class="item" onclick=this.classList.toggle("show-description")><p>Papas Burger and Fries <span class="price">$4.99</span><br /><small>Nothing can beat the mouth watering burger that is filled with so many flavors and many ways to style. This all time burger is a classic with cruncky and savery fries it is soemthing you dont want to miss.</small></p></div>',
 ]
-
 DinnerDivs = [
    '<div class="item" onclick=this.classList.toggle("show-description")><p> Festive Tacos <span class="price">$5.99</span><br /><small> Hard-shell tacos. ... Such tacos are crisp-fried corn tortillas filled with seasoned ground beef, cheese, lettuce, and sometimes tomato, onion, salsa, sour cream, and avocado or guacamole..  </small></p></div>',
     '<div class="item" onclick=this.classList.toggle("show-description")><p>Stuffy Peppers <span class="price">$3.99</span><br /><small>American cuisine is a dish where bell peppers (often the green, yellow, and red varieties) are typically filled with a stuffing such as ground beef, mixed with bread crumbs or cooked rice, eggs, herbs, and spices.</small></p></div>',
   '<div class="item" onclick=this.classList.toggle("show-description")><p>Fajita Bowl <span class="price">$3.99</span><br /><small>Tex-Mex cuisine is any grilled meat that is served as a taco on a flour or corn tortilla. The term originally referred to skirt steak, the cut of beef first used in the dish. Arrachera is a northern Mexican variant of the dish..</small></p></div>',
 ]
-
 DessertDivs = [
    '<div class="item" onclick=this.classList.toggle("show-description")><p> Puff Squares <span class="price">$9.99</span><br /><small> a light, flaky, rich pastry made by rolling dough with butter and folding it to form layers: used for tarts, napoleons, etc. British Dictionary definitions for puff pastry.  </small></p></div>',
     '<div class="item" onclick=this.classList.toggle("show-description")><p>Chocolate World Cup <span class="price">$14.99</span><br /><small>Layered chocolate and Baileys cream paired with crumbled Oreo cookies. This delicious Baileys parfait is the perfect weekend retreat!.</small></p></div>',
   '<div class="item" onclick=this.classList.toggle("show-description")><p> Crazy MACCO<span class="price">$3.99</span><br /><small>The difference between the two is the way the meringue is made. ... Either Italian or French meringue can be combined with ground almonds. A macaron is made by combining icing sugar and ground almonds into a fine mixture. In a separate bowl, egg whites are beaten to a meringue-like consistency.</small></p></div>',
 ]
+
+DrinkDivs = [
+   '<div class="item" onclick=this.classList.toggle("show-description")><p> Puff Squares <span class="price">$9.99</span><br /><small> a light, flaky, rich pastry made by rolling dough with butter and folding it to form layers: used for tarts, napoleons, etc. British Dictionary definitions for puff pastry.  </small></p></div>',
+    '<div class="item" onclick=this.classList.toggle("show-description")><p>Chocolate World Cup <span class="price">$14.99</span><br /><small>Layered chocolate and Baileys cream paired with crumbled Oreo cookies. This delicious Baileys parfait is the perfect weekend retreat!.</small></p></div>',
+  '<div class="item" onclick=this.classList.toggle("show-description")><p> Crazy MACCO<span class="price">$3.99</span><br /><small>The difference between the two is the way the meringue is made. ... Either Italian or French meringue can be combined with ground almonds. A macaron is made by combining icing sugar and ground almonds into a fine mixture. In a separate bowl, egg whites are beaten to a meringue-like consistency.</small></p></div>',
+]
+
+CharityDivs = [
+   '<div class="item" onclick=this.classList.toggle("show-description")><p> Puff Squares <span class="price">$9.99</span><br /><small> a light, flaky, rich pastry made by rolling dough with butter and folding it to form layers: used for tarts, napoleons, etc. British Dictionary definitions for puff pastry.  </small></p></div>',
+    '<div class="item" onclick=this.classList.toggle("show-description")><p>Chocolate World Cup <span class="price">$14.99</span><br /><small>Layered chocolate and Baileys cream paired with crumbled Oreo cookies. This delicious Baileys parfait is the perfect weekend retreat!.</small></p></div>',
+  '<div class="item" onclick=this.classList.toggle("show-description")><p> Crazy MACCO<span class="price">$3.99</span><br /><small>The difference between the two is the way the meringue is made. ... Either Italian or French meringue can be combined with ground almonds. A macaron is made by combining icing sugar and ground almonds into a fine mixture. In a separate bowl, egg whites are beaten to a meringue-like consistency.</small></p></div>',
+]
+
+function Breakfast() {
+    Food = document.getElementById("Foodies")
+    Food.innerHTML = ""
+	Food.innerHTML += BreakfastDivs[0]
+    Food.innerHTML += BreakfastDivs[1]
+    Food.innerHTML += BreakfastDivs[2]
+   //alert("Need energy?!")
+    items = document.getElementsByClassName("item")
+    items[0].style.background = BreakfastImages[0]
+    items[1].style.background = BreakfastImages[1]
+    items[2].style.background = BreakfastImages[2]
+    items[0].style.backgroundSize = '100% 100%'
+    items[1].style.backgroundSize = '100% 100%'
+    items[2].style.backgroundSize = '100% 100%'
+} 
 function Lunches() {
     Food = document.getElementById("Foodies")
     Food.innerHTML = ""
-	  Food.innerHTML += LunchesDivs[0]
+	Food.innerHTML += LunchesDivs[0]
     Food.innerHTML += LunchesDivs[1]
     Food.innerHTML += LunchesDivs[2]
    //alert("Came fo a tasty meal?!")
@@ -178,14 +227,16 @@ function Lunches() {
     items[0].style.background = LunchesImages[0]
     items[1].style.background = LunchesImages[1]
     items[2].style.background = LunchesImages[2]
+	items[3].style.background = LunchesImages[3]
     items[0].style.backgroundSize = '100% 100%'
     items[1].style.backgroundSize = '100% 100%'
     items[2].style.backgroundSize = '100% 100%'
+	items[3].style.backgroundSize = '100% 100%'
 }  
 function Dinners() {
     Food = document.getElementById("Foodies")
     Food.innerHTML = ""
-	  Food.innerHTML += DinnerDivs[0]
+	Food.innerHTML += DinnerDivs[0]
     Food.innerHTML += DinnerDivs[1]
     Food.innerHTML += DinnerDivs[2]
     //alert("Ready To Eat?")
@@ -194,7 +245,7 @@ function Dinners() {
     items[1].style.background = DinnerImages[1]
     items[2].style.background = DinnerImages[2]
     items[0].style.backgroundSize = '100% 100%'
-   items[1].style.backgroundSize = '100% 100%'
+    items[1].style.backgroundSize = '100% 100%'
     items[2].style.backgroundSize = '100% 100%'
 }
 function Desserts() {
@@ -208,11 +259,48 @@ function Desserts() {
     items[0].style.background = DessertImages[0]
     items[1].style.background = DessertImages[1]
     items[2].style.background = DessertImages[2]
+	items[3].style.background = DessertImages[3]
+	items[4].style.background = DessertImages[4]
+    items[0].style.backgroundSize = '100% 100%'
+	items[1].style.backgroundSize = '100% 100%'
+    items[2].style.backgroundSize = '100% 100%'
+	items[3].style.backgroundSize = '100% 100%'
+	items[4].style.backgroundSize = '100% 100%'
+}
+function Drinks() {
+    Food = document.getElementById("Foodies")
+    Food.innerHTML = ""
+	Food.innerHTML += DrinksDivs[0]
+    Food.innerHTML += DrinksDivs[1]
+    Food.innerHTML += DrinksDivs[2]
+   //alert("Bottoms up!")
+    items = document.getElementsByClassName("item")
+    items[0].style.background = DrinksImages[0]
+    items[1].style.background = DrinksImages[1]
+    items[2].style.background = DrinksImages[2]
+	items[3].style.background = DrinksImages[3]
+	items[4].style.background = DrinksImages[4]
     items[0].style.backgroundSize = '100% 100%'
     items[1].style.backgroundSize = '100% 100%'
     items[2].style.backgroundSize = '100% 100%'
-}
-
+	items[3].style.backgroundSize = '100% 100%'
+	items[4].style.backgroundSize = '100% 100%'
+} 
+function Charities() {
+    Food = document.getElementById("Foodies")
+    Food.innerHTML = ""
+	Food.innerHTML += CharitiesDivs[0]
+    Food.innerHTML += CharitiesDivs[1]
+    Food.innerHTML += CharitiesDivs[2]
+   //alert("Support Us?!")
+    items = document.getElementsByClassName("item")
+    items[0].style.background = CharitiesImages[0]
+    items[1].style.background = CharitiesImages[1]
+    items[2].style.background = CharitiesImages[2]
+    items[0].style.backgroundSize = '100% 100%'
+    items[1].style.backgroundSize = '100% 100%'
+    items[2].style.backgroundSize = '100% 100%'
+} 
 </script>
 
 </body>
