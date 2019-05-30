@@ -64,6 +64,12 @@ function setup() {
       }
       if (keyIsDown(DOWN_ARROW)) {
         y = y + 10
+	if (touches.length == 0)  {}
+	 else { 
+	 x = touches[0].x
+	 y = touches[0].y
+}
+
       }
 
       fill(204,153,255)
