@@ -53,6 +53,7 @@ function setup() {
     background(255,204,229);
     fill(204,255,255)
     circle(x,y,40)
+if (touches.length == 0)  {
     if (keyIsDown(LEFT_ARROW)) {
       x = x - 10
     }
@@ -64,13 +65,14 @@ function setup() {
       }
       if (keyIsDown(DOWN_ARROW)) {
         y = y + 10
-	if (touches.length == 0)  {}
+}
+	     }
 	 else { 
 	 x = touches[0].x
 	 y = touches[0].y
 }
 
-      }
+ 
 
       fill(204,153,255)
       circle(a,j,30)
