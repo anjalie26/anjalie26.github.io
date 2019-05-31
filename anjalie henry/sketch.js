@@ -32,7 +32,7 @@ let database = firebase.database()
  
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  x=200
+  x=20
   y=30
   a=200
   j=90
